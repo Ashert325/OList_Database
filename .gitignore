@@ -1,0 +1,16 @@
+# Raw data: download from Kaggle (see README)
+data/
+*.zip
+
+# DuckDB database files
+*.duckdb
+*.duckdb.wal
+
+# Python
+.venv/
+__pycache__/
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
