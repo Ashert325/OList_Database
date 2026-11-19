@@ -26,12 +26,12 @@ B: I would decide what the data type for each column would be
 
 
 
-## 2026-11-19: Casting delivery date as a timestamp
+## 2026-11-19: Casting delivery date as a date
 
 **Context:** During the staging layer within the orders table there was a choice between casting estimated delivery date as a timestamp or date.
 **Options considered:**
 A: Set the column as timestamp
 B: Set the column as date
 **Chosen:** B
-**Why:** Because with date the chances of a delivery on the same day being classed as late would be less likely as with a timestamp if the estimated date is set to 18th Nov 00:00 and the delivery date was 18th Nov 15:00 this would be classed as late since it was past the time even though was on time.
+**Why:** Because with date, the chances of a delivery on the same day being classed as late would be reduced as with a timestamp if the estimated date is set to 18th Nov 00:00 and the delivery date was 18th Nov 15:00 this would be classed as late since it was past the time even though was on time.
 **Tradeoff accepted:** To really check whether a delivery was late or not you would have to convert the remainder of the timestamp columns to a date to make a comparison/check.

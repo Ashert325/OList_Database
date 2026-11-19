@@ -22,5 +22,5 @@ create or replace view staging.stg_orders as
             cast(order_approved_at as timestamp) as Approved_At,
             cast(order_delivered_carrier_date as timestamp) as Delivered_To_Carrier_Date_At,
             cast(order_delivered_customer_date as timestamp) as Delivered_To_Customer_At,
-            cast(order_estimated_delivery_date as timestamp) as Estimated_Delivery_At
+            cast(order_estimated_delivery_date as date) as Estimated_Delivery_At
         from raw.orders;
