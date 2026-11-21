@@ -24,3 +24,15 @@ create or replace view staging.stg_orders as
             cast(order_delivered_customer_date as timestamp) as Delivered_To_Customer_At,
             cast(order_estimated_delivery_date as date) as Estimated_Delivery_At
         from raw.orders;
+
+--create the staging view for orders items table
+create or replace view staging.stg_order_items as
+        select
+            order_id,
+            cast(order_item_id as integer) as order_item_id,
+            product_id,
+            seller_id,
+            cast(shipping_limit_date as timestamp) as Shipping_Limit_At,
+            cast(price as decimal(10,2)) as Price,
+            cast(freight_value as decimal(10,2)) as Freight_Value
+        from raw.order_items;
