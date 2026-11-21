@@ -35,3 +35,4 @@ B: Set the column as date
 **Chosen:** B
 **Why:** Because with date, the chances of a delivery on the same day being classed as late would be reduced as with a timestamp if the estimated date is set to 18th Nov 00:00 and the delivery date was 18th Nov 15:00 this would be classed as late since it was past the time even though was on time.
 **Tradeoff accepted:** To really check whether a delivery was late or not you would have to convert the remainder of the timestamp columns to a date to make a comparison/check.
+
