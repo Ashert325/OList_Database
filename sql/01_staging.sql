@@ -24,3 +24,13 @@ create or replace view staging.stg_orders as
             cast(order_delivered_customer_date as timestamp) as Delivered_To_Customer_At,
             cast(order_estimated_delivery_date as date) as Estimated_Delivery_At
         from raw.orders;
+
+--create the staging view for order_payments table
+create or replace view staging.stg_order_payments as
+        select
+            order_id,
+            cast(payment_sequential as integer) as Payment_Sequential,
+            cast(payment_type as string) as Payment_Type,
+            cast(payment_installments as integer) as Payment_Installments,
+            cast(payment_value as decimal(10,2)) as Payment_Value
+        from raw.order_payments;
