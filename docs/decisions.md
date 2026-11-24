@@ -56,3 +56,13 @@ C: Remove these rows
 **Chosen:** A
 **Why:** This is because, they are not really causing any issues in the data and this is not something that is part of the staging process. Business rules to replace certain wording can be applied at a later stage.
 **Tradeoff accepted:** I guess it doesn't make it super clear as to what the not-defined data could suggest.
+
+## 2026-11-24: Casting creation date as a date
+
+**Context:** During the staging layer within the reviews table there was a choice between casting estimated it as a timestamp or date.
+**Options considered:**
+A: Set the column as timestamp
+B: Set the column as date
+**Chosen:** B
+**Why:** Because with date it just takes away the hassle of that midnight timing issue we also had with delivery date
+**Tradeoff accepted:** Again the tradeoff would be we would be losing the time attirbute from timestamp.
