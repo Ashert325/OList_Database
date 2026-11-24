@@ -34,6 +34,7 @@ create or replace view staging.stg_order_payments as
             cast(payment_installments as integer) as Payment_Installments,
             cast(payment_value as decimal(10,2)) as Payment_Value
         from raw.order_payments;
+        
 --create the staging view for orders items table
 create or replace view staging.stg_order_items as
         select
