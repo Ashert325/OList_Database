@@ -46,3 +46,24 @@ create or replace view staging.stg_order_items as
             cast(price as decimal(10,2)) as Price,
             cast(freight_value as decimal(10,2)) as Freight_Value
         from raw.order_items;
+
+--create the staging view for products table
+create or replace view staging.stg_products as
+        select
+            product_id,
+            product_category_name as Category_Name,
+            product_name_lenght as Name_Length,
+            product_description_lenght as Description_Length,
+            cast(product_photos_qty as integer) as Photos_Qty,
+            cast(product_weight_g as decimal(10,2)) as Weight_g,
+            cast(product_length_cm as decimal(10,2)) as Length_cm,
+            cast(product_height_cm as decimal(10,2)) as Height_cm,
+            cast(product_width_cm as decimal(10,2)) as Width_cm
+        from raw.products;
+
+--create the staging view for category_translation table
+create or replace view staging.stg_category_translation as 
+        select
+            product_category_name as Category_Name,
+            product_category_name_english as Category_Name_English
+        from raw.category_translation;

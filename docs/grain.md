@@ -15,3 +15,5 @@ Key: customer_id
 
 The reason the joined total is bigger than just the single total is because in order_items table we could have the same order with different items therefore the order for the order_payments will copy each payment once of each item. 
 What I learned: From this I learned that you don’t sum a value after joining to a table with a finer grain; aggregate first or join at the matching grain (same number of rows per order).
+
+Note: For the staged product table found two categories that have no English translation, need to decied what to do with them later. You will make a decision on this when building the star schema of this model.
