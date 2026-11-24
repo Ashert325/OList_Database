@@ -76,3 +76,15 @@ create or replace view staging.stg_sellers as
             seller_city as City,
             upper(seller_state) as State
         from raw.sellers;
+
+--create the staging view for order reviews table
+create or replace view staging.stg_order_reviews as
+        select
+            order_id,
+            review_id,
+            cast(review_score as integer) as Review_Score,
+            cast(review_comment_title as string) as Review_Comment_Title,
+            cast(review_comment_message as string) as Review_Comment_Message,
+            cast(review_creation_date as date) as Review_Creation_Date,
+            cast(review_answer_timestamp as timestamp) as Review_Answer_Timestamp
+        from raw.order_reviews;
