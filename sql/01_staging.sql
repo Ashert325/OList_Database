@@ -67,3 +67,12 @@ create or replace view staging.stg_category_translation as
             product_category_name as Category_Name,
             product_category_name_english as Category_Name_English
         from raw.category_translation;
+
+--create the staging view for sellers table
+create or replace view staging.stg_sellers as
+        select
+            seller_id,
+            seller_zip_code_prefix as Zip_Code_Prefix,
+            seller_city as City,
+            upper(seller_state) as State
+        from raw.sellers;
