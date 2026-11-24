@@ -35,3 +35,24 @@ B: Set the column as date
 **Chosen:** B
 **Why:** Because with date, the chances of a delivery on the same day being classed as late would be reduced as with a timestamp if the estimated date is set to 18th Nov 00:00 and the delivery date was 18th Nov 15:00 this would be classed as late since it was past the time even though was on time.
 **Tradeoff accepted:** To really check whether a delivery was late or not you would have to convert the remainder of the timestamp columns to a date to make a comparison/check.
+
+## 2026-11-21: Casting order_item_id as an integer
+
+**Context:** order_item_id is the line number within an order (1 to 21). It loads as text.
+**Options considered:**
+A: keep it as text
+B: cast it to integer
+**Chosen:** B
+**Why:** I imagine from a management point of view using a group or sort by function would be better when the coloumn type is interger rather text as with text there would be cases where "13 could come before 2"
+**Tradeoff accepted:** in the worst case, if a non number was picked up in the coloumn this would break the code and we would recieve an error.
+
+## 2026-11-21: Handling not_defined payment types
+
+**Context:** 3 of 103,886 payments have payment_type 'not_defined'. All three are £0.00, a single payment with 1 instalment.
+**Options considered:**
+A: To keep them as they are
+B: Relabel them as 'unknown'
+C: Remove these rows
+**Chosen:** A
+**Why:** This is because, they are not really causing any issues in the data and this is not something that is part of the staging process. Business rules to replace certain wording can be applied at a later stage.
+**Tradeoff accepted:** I guess it doesn't make it super clear as to what the not-defined data could suggest.
