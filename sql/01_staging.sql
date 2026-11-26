@@ -52,8 +52,8 @@ create or replace view staging.stg_products as
         select
             product_id,
             product_category_name as Category_Name,
-            product_name_lenght as Name_Length,
-            product_description_lenght as Description_Length,
+            cast(product_name_lenght as integer) as Name_Length,
+            cast(product_description_lenght as integer) as Description_Length,
             cast(product_photos_qty as integer) as Photos_Qty,
             cast(product_weight_g as decimal(10,2)) as Weight_g,
             cast(product_length_cm as decimal(10,2)) as Length_cm,
