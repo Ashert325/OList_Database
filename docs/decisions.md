@@ -66,3 +66,14 @@ B: Set the column as date
 **Chosen:** B
 **Why:** Because with date it just takes away the hassle of that midnight timing issue we also had with delivery date
 **Tradeoff accepted:** Again the tradeoff would be we would be losing the time attirbute from timestamp.
+
+## 2026-11-24: Excluding geolocation from staging
+
+**Context:** raw.geolocation maps zip code prefixes to coordinates, but it is not one row per zip. It has 1,000,163 rows for 19,015 prefixes.
+**Options considered:**
+A: Leave it in raw with no staging model for now
+B: Build a one-row-per-zip version (average coordinates, drop bad points)
+C: Stage all rows as they are
+**Chosen:** A
+**Why:** Really it is because it is the simplest options and I am not really losing anything and plus it really isn't necessary in the first version of the model.
+**Tradeoff accepted:** If in the case a customer distance/delivery analysis is required, option B can be built in. 
